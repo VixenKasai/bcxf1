@@ -1,0 +1,34 @@
+[
+  {
+    "race": "Australian Grand Prix",
+    "category": "Race Cars & Spares",
+    "color": "red",
+    "priority": "Critical",
+    "origin": "VHHH",
+    "originCity": "Hong Kong",
+    "destination": "YMML",
+    "destinationCity": "Melbourne",
+    "distance": "2800 nm",
+    "aircraft": "777F",
+    "flightTime": "5h 45m",
+    "weight": "45 t",
+    "departure": "Race -5 days",
+    "description": "10 F1 cars, spare chassis, engines, and critical components"
+  },
+  {
+    "race": "Australian Grand Prix",
+    "category": "Pit Equipment",
+    "color": "orange",
+    "priority": "High Priority",
+    "origin": "VHHH",
+    "originCity": "Hong Kong",
+    "destination": "YMML",
+    "destinationCity": "Melbourne",
+    "distance": "2850 nm",
+    "aircraft": "777F",
+    "flightTime": "5h 45m",
+    "weight": "35 t",
+    "departure": "Race -6 days",
+    "description": "Garage equipment, wheel guns, jacks, tools, and pit wall systems"
+  }
+]

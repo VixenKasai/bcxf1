@@ -2,220 +2,268 @@
   {
     "round": 1,
     "country": "Australia",
+    "city": "Melbourne",
+    "airport": "YMML",
     "name": "Australian Grand Prix",
     "circuit": "Albert Park Circuit",
     "startDate": "Mar 6, 2026",
     "endDate": "Mar 8, 2026",
-    "link": "/race/australia"
+    "link": "/race/australia.html"
   },
   {
     "round": 2,
     "country": "China",
+    "city": "Shanghai",
+    "airport": "ZSPD",
     "name": "Chinese Grand Prix",
     "circuit": "Shanghai International Circuit",
     "startDate": "Mar 13, 2026",
     "endDate": "Mar 15, 2026",
-    "link": "/race/china"
+    "link": "/race/china.html"
   },
   {
     "round": 3,
     "country": "Japan",
+    "city": "Suzuka",
+    "airport": "RJGG",
     "name": "Japanese Grand Prix",
     "circuit": "Suzuka Circuit",
     "startDate": "Mar 27, 2026",
     "endDate": "Mar 29, 2026",
-    "link": "/race/japan"
+    "link": "/race/japan.html"
   },
   {
     "round": 4,
     "country": "Bahrain",
+    "city": "Sakhir",
+    "airport": "OBBI",
     "name": "Bahrain Grand Prix",
     "circuit": "Bahrain International Circuit",
     "startDate": "Apr 10, 2026",
     "endDate": "Apr 12, 2026",
-    "link": "/race/bahrain",
+    "link": "/race/bahrain.html",
     "cancelled": true
   },
   {
     "round": 5,
     "country": "Saudi Arabia",
+    "city": "Jeddah",
+    "airport": "OEJN",
     "name": "Saudi Arabian Grand Prix",
     "circuit": "Jeddah Corniche Circuit",
     "startDate": "Apr 17, 2026",
     "endDate": "Apr 19, 2026",
-    "link": "/race/saudi-arabia",
+    "link": "/race/saudi-arabia.html",
     "cancelled": true
   },
   {
     "round": 6,
     "country": "United States",
+    "city": "Miami",
+    "airport": "KMIA",
     "name": "Miami Grand Prix",
     "circuit": "Miami International Autodrome",
     "startDate": "May 1, 2026",
     "endDate": "May 3, 2026",
-    "link": "/race/miami"
+    "link": "/race/miami.html"
   },
   {
     "round": 7,
     "country": "Canada",
+    "city": "Montreal",
+    "airport": "CYUL",
     "name": "Canadian Grand Prix",
     "circuit": "Circuit Gilles Villeneuve",
     "startDate": "May 22, 2026",
     "endDate": "May 24, 2026",
-    "link": "/race/canada"
+    "link": "/race/canada.html"
   },
   {
     "round": 8,
     "country": "Monaco",
+    "city": "Monte Carlo",
+    "airport": "LFMN",
     "name": "Monaco Grand Prix",
     "circuit": "Circuit de Monaco",
     "startDate": "Jun 5, 2026",
     "endDate": "Jun 7, 2026",
-    "link": "/race/monaco"
+    "link": "/race/monaco.html"
   },
   {
     "round": 9,
     "country": "Spain",
+    "city": "Barcelona",
+    "airport": "LEBL",
     "name": "Spanish Grand Prix",
     "circuit": "Circuit de Barcelona-Catalunya",
     "startDate": "Jun 12, 2026",
     "endDate": "Jun 14, 2026",
-    "link": "/race/spain"
+    "link": "/race/spain.html"
   },
   {
     "round": 10,
     "country": "Austria",
+    "city": "Spielberg",
+    "airport": "LOWG",
     "name": "Austrian Grand Prix",
     "circuit": "Red Bull Ring",
     "startDate": "Jun 26, 2026",
     "endDate": "Jun 28, 2026",
-    "link": "/race/austria"
+    "link": "/race/austria.html"
   },
   {
     "round": 11,
     "country": "United Kingdom",
+    "city": "Silverstone",
+    "airport": "EGKK",
     "name": "British Grand Prix",
     "circuit": "Silverstone Circuit",
     "startDate": "Jul 3, 2026",
     "endDate": "Jul 5, 2026",
-    "link": "/race/great-britain"
+    "link": "/race/great-britain.html"
   },
   {
     "round": 12,
     "country": "Belgium",
+    "city": "Spa",
+    "airport": "EBLG",
     "name": "Belgian Grand Prix",
     "circuit": "Spa-Francorchamps",
     "startDate": "Jul 17, 2026",
     "endDate": "Jul 19, 2026",
-    "link": "/race/belgium"
+    "link": "/race/belgium.html"
   },
   {
     "round": 13,
     "country": "Hungary",
+    "city": "Budapest",
+    "airport": "LHBP",
     "name": "Hungarian Grand Prix",
     "circuit": "Hungaroring",
     "startDate": "Jul 24, 2026",
     "endDate": "Jul 26, 2026",
-    "link": "/race/hungary"
+    "link": "/race/hungary.html"
   },
   {
     "round": 14,
     "country": "Netherlands",
+    "city": "Zandvoort",
+    "airport": "EHAM",
     "name": "Dutch Grand Prix",
     "circuit": "Circuit Zandvoort",
     "startDate": "Aug 21, 2026",
     "endDate": "Aug 23, 2026",
-    "link": "/race/netherlands"
+    "link": "/race/netherlands.html"
   },
   {
     "round": 15,
     "country": "Italy",
+    "city": "Monza",
+    "airport": "LIMC",
     "name": "Italian Grand Prix",
     "circuit": "Autodromo Nazionale Monza",
     "startDate": "Sep 4, 2026",
     "endDate": "Sep 6, 2026",
-    "link": "/race/italy"
+    "link": "/race/italy.html"
   },
   {
     "round": 16,
     "country": "Spain",
+    "city": "Madrid",
+    "airport": "LEMD",
     "name": "Madrid Grand Prix",
     "circuit": "Madring",
     "startDate": "Sep 11, 2026",
     "endDate": "Sep 13, 2026",
-    "link": "/race/spain"
+    "link": "/race/spain.html"
   },
   {
     "round": 17,
     "country": "Azerbaijan",
+    "city": "Baku",
+    "airport": "UBBB",
     "name": "Azerbaijan Grand Prix",
     "circuit": "Baku City Circuit",
     "startDate": "Sep 24, 2026",
     "endDate": "Sep 26, 2026",
-    "link": "/race/azerbaijan"
+    "link": "/race/azerbaijan.html"
   },
   {
     "round": 18,
     "country": "Singapore",
+    "city": "Singapore",
+    "airport": "WSSS",
     "name": "Singapore Grand Prix",
     "circuit": "Marina Bay Street Circuit",
     "startDate": "Oct 9, 2026",
     "endDate": "Oct 11, 2026",
     "cargoRoute": "0",
-    "link": "/race/singapore"
+    "link": "/race/singapore.html"
   },
   {
     "round": 19,
     "country": "United States",
+    "city": "Austin",
+    "airport": "KAUS",
     "name": "United States Grand Prix",
     "circuit": "Circuit of the Americas",
     "startDate": "Oct 23, 2026",
     "endDate": "Oct 25, 2026",
-    "link": "/race/usa"
+    "link": "/race/usa.html"
   },
   {
     "round": 20,
     "country": "Mexico",
+    "city": "Mexico City",
+    "airport": "MMMX",
     "name": "Mexico City Grand Prix",
     "circuit": "Autódromo Hermanos Rodríguez",
     "startDate": "Oct 30, 2026",
     "endDate": "Nov 1, 2026",
-    "link": "/race/mexico"
+    "link": "/race/mexico.html"
   },
   {
     "round": 21,
     "country": "Brazil",
+    "city": "São Paulo",
+    "airport": "SBGR",
     "name": "São Paulo Grand Prix",
     "circuit": "Interlagos",
     "startDate": "Nov 6, 2026",
     "endDate": "Nov 8, 2026",
-    "link": "/race/brazil"
+    "link": "/race/brazil.html"
   },
   {
     "round": 22,
     "country": "United States",
+    "city": "Las Vegas",
+    "airport": "KLAS",
     "name": "Las Vegas Grand Prix",
     "circuit": "Las Vegas Strip Circuit",
     "startDate": "Nov 19, 2026",
     "endDate": "Nov 21, 2026",
-    "link": "/race/las-vegas"
+    "link": "/race/las-vegas.html"
   },
   {
     "round": 23,
     "country": "Qatar",
+    "city": "Lusail",
+    "airport": "OTHH",
     "name": "Qatar Grand Prix",
     "circuit": "Lusail International Circuit",
     "startDate": "Nov 27, 2026",
     "endDate": "Nov 29, 2026",
-    "link": "/race/qatar"
+    "link": "/race/qatar.html"
   },
   {
     "round": 24,
     "country": "United Arab Emirates",
+    "city": "Abu Dhabi",
+    "airport": "OMAA",
     "name": "Abu Dhabi Grand Prix",
     "circuit": "Yas Marina Circuit",
     "startDate": "Dec 4, 2026",
     "endDate": "Dec 6, 2026",
-    "link": "/race/abu-dhabi"
+    "link": "/race/abu-dhabi.html"
   }
 ]
