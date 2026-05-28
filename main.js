@@ -97,7 +97,7 @@ async function loadSchedule(container) {
                 let barClass = "bg-primary";
                 let titleClass = "text-foreground group-hover:text-primary";
                 let arrowHoverClass = "group-hover:text-primary";
-                let actionText = "View Routes";
+                let actionText = "View Race Deatils";
 
                 if (isCancelled) {
                     // Strips interactions and greys out the card
