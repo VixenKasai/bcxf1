@@ -44,8 +44,8 @@ async function loadSchedule(container) {
         if (!response.ok) throw new Error("Failed to load schedule");
 
         const races = await response.json();
+        const now = new Date().getTime();
 
-        // Dictionary to convert short months to full names for the headers
         const monthNames = {
             "Jan": "January", "Feb": "February", "Mar": "March",
             "Apr": "April", "May": "May", "Jun": "June",
@@ -53,10 +53,8 @@ async function loadSchedule(container) {
             "Oct": "October", "Nov": "November", "Dec": "December"
         };
 
-        // Group races by month and year
         const racesByMonth = {};
         races.forEach(race => {
-            // Using startDate as you requested
             const parts = race.startDate.split(" ");
             const shortMonth = parts[0];
             const year = parts[2];
@@ -68,7 +66,6 @@ async function loadSchedule(container) {
             racesByMonth[groupKey].push(race);
         });
 
-        // Build the HTML
         let htmlContent = "";
 
         for (const [monthYear, monthRaces] of Object.entries(racesByMonth)) {
@@ -83,33 +80,72 @@ async function loadSchedule(container) {
             `;
 
             monthRaces.forEach(race => {
+
+                // Determine Statuses
+                const isCancelled = race.cancelled === true;
+                const raceDateString = race.endDate || race.startDate;
+                const raceEndTime = new Date(raceDateString).getTime() + 86400000;
+                const isPast = now > raceEndTime && !isCancelled;
+
+                // Defaults (Future Races)
+                let wrapperTag = "a";
+                let hrefAttr = `href="${race.link}"`;
+                let opacityClass = "";
+                let hoverClasses = "transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 cursor-pointer";
+                let badgeClass = "bg-primary text-primary-foreground";
+                let badgeText = `R${race.round}`;
+                let barClass = "bg-primary";
+                let titleClass = "text-foreground group-hover:text-primary";
+                let arrowHoverClass = "group-hover:text-primary";
+                let actionText = "View Routes";
+
+                if (isCancelled) {
+                    // Strips interactions and greys out the card
+                    wrapperTag = "div";
+                    hrefAttr = "";
+                    opacityClass = "opacity-50";
+                    hoverClasses = "";
+                    badgeClass = "bg-secondary text-muted-foreground border border-border";
+                    badgeText = "CANCELLED";
+                    barClass = "bg-border";
+                    titleClass = "text-muted-foreground line-through";
+                    actionText = "Event Cancelled";
+                } else if (isPast) {
+                    // Greys out but keeps it interactive
+                    opacityClass = "opacity-50 hover:opacity-100";
+                    badgeClass = "bg-secondary text-muted-foreground border border-border";
+                    barClass = "bg-border";
+                    titleClass = "text-muted-foreground group-hover:text-foreground";
+                    arrowHoverClass = "group-hover:text-foreground";
+                }
+
                 htmlContent += `
-                    <a class="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5" href="${race.link}">
+                    <${wrapperTag} ${hrefAttr} class="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card ${hoverClasses} ${opacityClass}">
                         <div class="absolute right-3 top-3 z-10">
-                            <span class="rounded bg-primary px-2 py-1 text-xs font-bold text-primary-foreground">R${race.round}</span>
+                            <span class="rounded px-2 py-1 text-xs font-bold ${badgeClass}">${badgeText}</span>
                         </div>
-                        <div class="h-1 w-full bg-primary"></div>
+                        <div class="h-1 w-full ${barClass}"></div>
                         <div class="flex flex-1 flex-col p-4">
                             <div class="mb-2 flex items-center gap-2">
                                 <span class="text-xs font-medium uppercase tracking-wider text-muted-foreground">${race.country}</span>
                             </div>
-                            <h3 class="mb-3 text-lg font-bold leading-tight text-foreground group-hover:text-primary">${race.name}</h3>
+                            <h3 class="mb-3 text-lg font-bold leading-tight ${titleClass}">${race.name}</h3>
                             <div class="mt-auto space-y-2">
                                 <div class="flex items-center gap-2 text-sm text-muted-foreground">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin h-4 w-4" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                    <span>${race.circuit}</span>
+                                    <span class="${isCancelled ? 'line-through opacity-50' : ''}">${race.circuit}</span>
                                 </div>
                                 <div class="flex items-center gap-2 text-sm text-muted-foreground">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar h-4 w-4" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
-                                    <span>${race.startDate} - ${race.endDate || ''}</span>
+                                    <span class="${isCancelled ? 'line-through opacity-50' : ''}">${race.startDate} - ${race.endDate || ''}</span>
                                 </div>
                             </div>
                             <div class="mt-4 flex items-center justify-between border-t border-border pt-4">
-                                <span class="text-sm text-muted-foreground">View Race Details</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+                                <span class="text-sm text-muted-foreground">${actionText}</span>
+                                ${!isCancelled ? `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 ${arrowHoverClass}" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>` : ''}
                             </div>
                         </div>
-                    </a>
+                    </${wrapperTag}>
                 `;
             });
 
