@@ -105,7 +105,7 @@ async function loadSchedule(container) {
                                 </div>
                             </div>
                             <div class="mt-4 flex items-center justify-between border-t border-border pt-4">
-                                <span class="text-sm text-muted-foreground">View Routes</span>
+                                <span class="text-sm text-muted-foreground">View Race Details</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
                             </div>
                         </div>
@@ -136,16 +136,20 @@ async function initializeCountdown() {
 
         const races = await response.json();
         const now = new Date().getTime();
-        let nextRace = null;
 
-        for (const race of races) {
-            // Parses the startDate property into a timestamp
+        let nextRace = null;
+        let lastRace = null;
+
+        for (let i = 0; i < races.length; i++) {
+            const race = races[i];
             const timeString = race.startDate || race.date;
             const raceStartTime = new Date(timeString).getTime();
 
             // If the race starts in the future, it's the next one
             if (raceStartTime > now) {
                 nextRace = race;
+                // The featured origin is the previous race, if one exists
+                lastRace = i > 0 ? races[i - 1] : null;
                 targetDate = raceStartTime;
                 break;
             }
@@ -158,8 +162,21 @@ async function initializeCountdown() {
 
             if (nameElement) nameElement.innerText = nextRace.name;
             if (detailsElement) {
-                detailsElement.innerText = `Round ${nextRace.round} - ${nextRace.circuit} , ${nextRace.country}`;
+                detailsElement.innerText = `Round ${nextRace.round} - ${nextRace.circuit}, ${nextRace.country}`;
             }
+
+            // Populate Featured Route
+            if (lastRace) {
+                document.getElementById('featured-dep-airport').innerText = lastRace.airport;
+                document.getElementById('featured-dep-city').innerText = lastRace.city;
+            } else {
+                // Fallback if it's the first race of the season (e.g., origin from HQ)
+                document.getElementById('featured-dep-airport').innerText = "EDDK";
+                document.getElementById('featured-dep-city').innerText = "Cologne Bonn";
+            }
+
+            document.getElementById('featured-arr-airport').innerText = nextRace.airport;
+            document.getElementById('featured-arr-city').innerText = nextRace.city;
 
             // Immediately calculate time before starting interval
             updateCountdown();
@@ -176,6 +193,11 @@ async function initializeCountdown() {
             document.getElementById('cd-hours').innerText = "00";
             document.getElementById('cd-mins').innerText = "00";
             document.getElementById('cd-secs').innerText = "00";
+
+            document.getElementById('featured-dep-airport').innerText = "---";
+            document.getElementById('featured-dep-city').innerText = "Season Over";
+            document.getElementById('featured-arr-airport').innerText = "---";
+            document.getElementById('featured-arr-city').innerText = "Season Over";
         }
 
     } catch (error) {
